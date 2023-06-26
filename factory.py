@@ -1,5 +1,5 @@
 from car import Car
-from datetime import datetime
+from datetime import date
 from engine.capulet_engine import CapuletEngine
 from engine.sternman_engine import SternmanEngine
 from engine.willoughby_engine import WilloughbyEngine
@@ -7,11 +7,12 @@ from battery.nubbin import NubbinBattery
 from battery.spindler import SpindlerBattery
 
 
-class CarFactory():
+class CarFactory:
 
+    @staticmethod
     def create_calliope(
-        current_date: datetime,
-        last_service_date: datetime,
+        current_date: date,
+        last_service_date: date,
         current_mileage: int,
         last_service_mileage: int
     ) -> Car:
@@ -19,9 +20,10 @@ class CarFactory():
         battery = SpindlerBattery(last_service_date, current_date)
         return Car(engine=engine, battery=battery)
 
+    @staticmethod
     def create_glissade(
-        current_date: datetime,
-        last_service_date: datetime,
+        current_date: date,
+        last_service_date: date,
         current_mileage: int,
         last_service_mileage: int
     ) -> Car:
@@ -29,18 +31,20 @@ class CarFactory():
         battery = SpindlerBattery(last_service_date, current_date)
         return Car(engine, battery)
 
+    @staticmethod
     def create_palindrome(
-        current_date: datetime,
-        last_service_date: datetime,
+        current_date: date,
+        last_service_date: date,
         warning_light_on: bool,
     ) -> Car:
         engine = SternmanEngine(warning_light_is_on=warning_light_on)
         battery = SpindlerBattery(last_service_date, current_date)
         return Car(engine, battery)
     
+    @staticmethod
     def create_rorschach(
-        current_date: datetime,
-        last_service_date: datetime,
+        current_date: date,
+        last_service_date: date,
         current_mileage: int,
         last_service_mileage: int        
     ) -> Car:
@@ -48,9 +52,10 @@ class CarFactory():
         battery = NubbinBattery(last_service_date, current_date)
         return Car(engine, battery)
 
+    @staticmethod
     def create_thovex(
-        current_date: datetime,
-        last_service_date: datetime,
+        current_date: date,
+        last_service_date: date,
         current_mileage: int,
         last_service_mileage: int
     ) -> Car:
